@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Students <a href="{{ url('/student/create') }}"> Create Student</a></h1>
+    <h1>Students <a href="{{ url('/students/create') }}"> Create Student</a></h1>
     <table border="1">
         <tr>
             <th>Name</th>
@@ -24,6 +24,11 @@
                 <td>{{ $student->phone }}</td>
                 <td><a href="{{ url('/students/' . $student->id) }}">View</a>
                     <a href="{{ url('/students/' . $student->id .'/edit') }}" >Edit</a>
+                    <form action="{{url('/students/' . $student->id)}}" method="post"  style="display: inline"onclick="return confirm('Are you sure you want to delete this item?');">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

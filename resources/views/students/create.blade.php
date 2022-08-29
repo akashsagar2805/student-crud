@@ -20,7 +20,7 @@
     <input type="text" placeholder="Enter City" name="city"> <br><br>
     <label>Student State:</label>
     <select name="state">
-        <option value="">Select State</option>
+        <option value="Select state">Select State</option>
         <option value="maharashtra">Maharashtra</option>
         <option value="madhyapradesh">Madhya Pradesh</option>
         <option value="punjab">Punjab</option>
