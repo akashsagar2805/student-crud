@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -25,7 +26,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $teachers = Teacher::all();
+        return view('students.create',compact('teachers'));
     }
 
     /**
@@ -36,10 +38,12 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required',
+            'teacher'=> 'required',
             'city'=>'required',
             'state'=>'required',
             'address'=>'required'
@@ -48,6 +52,7 @@ class StudentController extends Controller
         $student = new Student();
         $student->name = $request->name;
         $student->email = $request->email;
+        $student->teacher_id = $request->teacher;
         $student->phone = $request->phone;
         $student->city = $request->city;
         $student->state = $request->state;
@@ -63,13 +68,15 @@ class StudentController extends Controller
      * Display the specified resource.
      *
      * @param  App\models\Student $student
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Student $student, )
     {
        // $student = Student::find($id);
+       $teacher = Teacher::find($student->teacher_id);
+       return view('students.show', compact('student','teacher'));
 
-        return view('students.show', compact('student'));
     }
 
     /**
@@ -81,8 +88,8 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         //$student = Student::find($id);
-
-        return view('students.edit',compact('student'));
+        $teachers = Teacher::all();
+        return view('students.edit',compact('student','teachers'));
     }
 
     /**
@@ -98,6 +105,7 @@ class StudentController extends Controller
             'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required',
+            'teacher'=>'required',
             'city'=>'required',
             'state'=>'required',
             'address'=>'required'
@@ -108,6 +116,7 @@ class StudentController extends Controller
         $student->name = $request->name;
         $student->email = $request->email;
         $student->phone = $request->phone;
+        $student->teacher_id = $request->teacher;
         $student->city = $request->city;
         $student->state = $request->state;
         $student->address = $request->address;
@@ -121,7 +130,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  App/models/Student $student
+     * @param  App\models\Student $student
      * @return \Illuminate\Http\Response
      */
     public function destroy(Student $student)

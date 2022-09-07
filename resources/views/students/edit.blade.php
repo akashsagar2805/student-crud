@@ -15,6 +15,13 @@
     <input type="text" placeholder="Enter Name" name="name" value="{{$student->name}}"> <br><br>
     <label>Student Email:</label>
     <input type="email" placeholder="Enter Email" name="email" value="{{$student->email}}"> <br><br>
+    <label for="teacher">Select Teacher</label>
+        <select name="teacher">
+            <option value="">Select Teacher</option>
+            @foreach ($teachers as $teacher)
+                <option value="{{ $teacher->id }}" {{$student->teacher_id == $teacher->id ? 'selected' : ''}}>{{ $teacher->name }}</option>
+            @endforeach
+        </select>
     <label>Student Phone:</label>
     <input type="text" placeholder="Enter Phone" name="phone" value="{{$student->phone}}"> <br><br>
     <label>Student City:</label>
@@ -22,11 +29,11 @@
     <label>Student State:</label>
     <select name="state">
         <option value="">Select State</option>
-        <option value="maharashtra"{{$student->state == 'maharashtra' ? 'selected' : ''}}>Maharashtra</option>
-        <option value="madhyapradesh"{{$student->state == 'madhyapradesh' ? 'selected' : ''}}>Madhya Pradesh</option>
-        <option value="punjab"{{$student->state == 'punjab' ? 'selected' : ''}}>Punjab</option>
-        <option value="gujrat"{{$student->state == 'gujrat' ? 'selected' : ''}}>Gujrat</option>
-        <option value="telangana"{{$student->state == 'telangana' ? 'selected' : ''}}>Telangana</option>
+        <option value="maharashtra" {{$student->state == 'maharashtra' ? 'selected' : ''}}>Maharashtra</option>
+        <option value="madhyapradesh" {{$student->state == 'madhyapradesh' ? 'selected' : ''}}>Madhya Pradesh</option>
+        <option value="punjab" {{$student->state == 'punjab' ? 'selected' : ''}}>Punjab</option>
+        <option value="gujrat" {{$student->state == 'gujrat' ? 'selected' : ''}}>Gujrat</option>
+        <option value="telangana" {{$student->state == 'telangana' ? 'selected' : ''}}>Telangana</option>
     </select><br><br>
     <label>Student Address:</label>
     <textarea name="address" id="" cols="25" rows="10" placeholder="Enter Address">{{$student->address}}</textarea>

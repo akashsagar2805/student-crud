@@ -13,14 +13,22 @@
     <label>Student Name:</label>
     <input type="text" placeholder="Enter Name" name="name"> <br><br>
     <label>Student Email:</label>
-    <input type="email" placeholder="Enter Email" name="email"> <br><br>
+    <input type="email" placeholder="Enter Email" name="email">
+    <br><br>
+    <label for="teacher">Select Teacher</label>
+        <select name="teacher">
+            <option value="">Select Teacher</option>
+            @foreach ($teachers as $teacher)
+                <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+            @endforeach
+        </select> <br><br>
     <label>Student Phone:</label>
     <input type="text" placeholder="Enter Phone" name="phone"> <br><br>
     <label>Student City:</label>
     <input type="text" placeholder="Enter City" name="city"> <br><br>
     <label>Student State:</label>
     <select name="state">
-        <option value="Select state">Select State</option>
+        <option value="">Select State</option>
         <option value="maharashtra">Maharashtra</option>
         <option value="madhyapradesh">Madhya Pradesh</option>
         <option value="punjab">Punjab</option>

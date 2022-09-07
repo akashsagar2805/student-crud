@@ -10,6 +10,7 @@
 
 <body>
     <h1>Students <a href="{{ url('/students/create') }}"> Create Student</a></h1>
+
     <table border="1">
         <tr>
             <th>Name</th>

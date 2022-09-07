@@ -19,6 +19,10 @@
             <td>{{$student->email}}</td>
         </tr>
         <tr>
+            <th>Teacher</th>
+            <td>{{$teacher->name}}</td>
+        </tr>
+        <tr>
             <th>Phone</th>
             <td>{{$student->phone}}</td>
         </tr>
